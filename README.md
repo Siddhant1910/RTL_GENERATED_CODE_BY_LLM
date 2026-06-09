@@ -15,6 +15,15 @@ carry lookahead adder/
 └── gpt/
     └── prompts/
         ├── 01_zero_shot.sv … 10_hybrid.sv
+
+Booth Multiplier/
+└── GPT-5.5/
+    ├── Behavioural/
+    │   ├── 01_Zero_Shot/ … 10_Hybrid/
+    ├── Dataflow/
+    │   ├── 01_Zero_Shot/ … 10_Hybrid/
+    └── Structural/
+        ├── 01_Zero_Shot/ … 10_Hybrid/
 ```
 
 ## Prompt strategies
@@ -42,6 +51,17 @@ From `CARRY_LOOKAHEAD_ADDER.pdf`. Each `.sv` file under `carry lookahead adder/g
 | Dataflow | Pure `assign` carry lookahead equations |
 | Behavioral | `always @(*)` with group lookahead |
 | Testbench | Self-checking `tb_cla_adder_16bit` with directed + 50k random vectors |
+
+## Booth Multiplier (16-bit Signed)
+
+Generated from `Booth Multiplier Structural.pdf`, `Booth_multiplier_dataflow.pdf`, and `Radix-2 Booth Multiplier Behavioural.pdf`. The implementation is separated into folders based on the architectural style under `Booth Multiplier/GPT-5.5/`:
+
+| Section | Description |
+|---------|-------------|
+| Structural | Gate-level hierarchy with explicit `booth_encoder`, `pp_gen`, and `adder32` instantiations |
+| Dataflow | Pure continuous assignments (`assign`) for partial-product generation and summation |
+| Behavioural | Procedural block implementations (`always`) for multiplication logic |
+
 
 ## Simulation
 
