@@ -19,6 +19,15 @@ Booth Multiplier/
     │   ├── 01_Zero_Shot/ … 10_Hybrid/
     └── Structural/
         ├── 01_Zero_Shot/ … 10_Hybrid/
+
+Carry Select Adder/
+└── GPT-5.5/
+    ├── Behavioural/
+    │   ├── 01_Zero_Shot/ … 10_Hybrid/
+    ├── Dataflow/
+    │   ├── 01_Zero_Shot/ … 10_Hybrid/
+    └── Structural/
+        ├── 01_Zero_Shot/ … 10_Hybrid/
 ```
 
 ## Prompt strategies
@@ -46,6 +55,15 @@ Generated from `Booth Multiplier Structural.pdf`, `Booth_multiplier_dataflow.pdf
 | Dataflow | Pure continuous assignments (`assign`) for partial-product generation and summation |
 | Behavioural | Procedural block implementations (`always`) for multiplication logic |
 
+## Carry Select Adder (16-bit)
+
+Generated from `carry select adder_ structural2.pdf` and `carry_select_head_dataflow_behavioral.pdf`. The implementation is separated into folders based on the architectural style under `Carry Select Adder/GPT-5.5/`:
+
+| Section | Description |
+|---------|-------------|
+| Structural | Gate-level hierarchy with explicit `full_adder`, `rca4`, and `mux2` instantiations |
+| Dataflow | Pure continuous assignments (`assign`) for dual-candidate sums and carry-select mux |
+| Behavioural | Procedural `always @(*)` implementations with if-else carry selection |
 
 ## Simulation
 
