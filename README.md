@@ -11,11 +11,6 @@ ripple carry adder/
 └── prompts/
     ├── 01_zero_shot.sv … 10_hybrid.sv
 
-carry lookahead adder/
-└── gpt/
-    └── prompts/
-        ├── 01_zero_shot.sv … 10_hybrid.sv
-
 Booth Multiplier/
 └── GPT-5.5/
     ├── Behavioural/
@@ -41,17 +36,6 @@ Booth Multiplier/
 | 9 | `09_iterative_correction.sv` | Iterative correction — `rca_4bit_iterative` |
 | 10 | `10_hybrid.sv` | Hybrid — structural lower + behavioral upper bits |
 
-## Carry Lookahead Adder (16-bit CLA)
-
-From `CARRY_LOOKAHEAD_ADDER.pdf`. Each `.sv` file under `carry lookahead adder/gpt/prompts/` contains:
-
-| Section | Description |
-|---------|-------------|
-| Structural | Gate-level hierarchy (`pg_cell`, `cla_carry4`, `sum_cell`, `group_pg`, `inter_carry`) |
-| Dataflow | Pure `assign` carry lookahead equations |
-| Behavioral | `always @(*)` with group lookahead |
-| Testbench | Self-checking `tb_cla_adder_16bit` with directed + 50k random vectors |
-
 ## Booth Multiplier (16-bit Signed)
 
 Generated from `Booth Multiplier Structural.pdf`, `Booth_multiplier_dataflow.pdf`, and `Radix-2 Booth Multiplier Behavioural.pdf`. The implementation is separated into folders based on the architectural style under `Booth Multiplier/GPT-5.5/`:
@@ -69,8 +53,5 @@ Compile **one file at a time** (module names overlap across strategies).
 
 ```bash
 iverilog -g2012 -o sim "ripple carry adder/prompts/01_zero_shot.sv"
-vvp sim
-
-iverilog -g2012 -o sim "carry lookahead adder/gpt/prompts/01_zero_shot.sv"
 vvp sim
 ```
